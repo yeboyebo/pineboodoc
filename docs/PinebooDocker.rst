@@ -63,17 +63,9 @@ Bajamos los ficheros del docker de producción, para ello nos vamos a la carpeta
 
     git clone https://github.com/yeboyebo/pinebooapi.git
 
+Posteriormente tenemos que dar permisos a la carpeta para poder ejecutar la aplicacion:
 
-Adaptar a aplicación
---------------------
-
-Para ello cambiaremos la configuración del fichero app/AQNEXT/local.py
-
-Aquí configuramos si queremos carga estatica:
-
-    - StaticLoader: Si la dejamos como True estamos indicando que queremos activada la carga estatica, seria recomendable desactivarla cuando no se este desarrollando
-    - dirs: Indicaoms la ruta a los scripts que queremos cargar con carga estatica siempre con /pineboo/modules/ delante, por ejemplo si queremos cargar los scripts de libreria = [True, "/pineboo/modules/libreria/scripts",]
-
+    chmod -R 775 pinebooapi
 
 
 Adaptar a entorno
@@ -92,6 +84,18 @@ Lo modificaremos conforme a estas reglas:
     - DBPOST = El puerto de conexion con la base de datos
     - PINEBOODIR = /ruta/pineboo
     - MODULESDIR = /ruta/modules donde queremos la carga estatica
+
+
+Adaptar a aplicación
+--------------------
+
+Para ello cambiaremos la configuración del fichero app/AQNEXT/local.py
+
+Aquí configuramos si queremos carga estatica:
+
+    - StaticLoader: Si la dejamos como True estamos indicando que queremos activada la carga estatica, seria recomendable desactivarla cuando no se este desarrollando
+    - dirs: Indicamos la ruta a los scripts que queremos cargar con carga estatica siempre con /pineboo/modules/ delante, por ejemplo si queremos cargar los scripts de libreria = [True, "/pineboo/modules/libreria/scripts",]
+
 
 
 Comandos
