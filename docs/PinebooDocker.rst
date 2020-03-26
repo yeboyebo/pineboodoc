@@ -75,16 +75,17 @@ Para ello cambiaremos la configuración del fichero .env (oculto). Si no existe 
 
 Lo modificaremos conforme a estas reglas:
 
-    - PORT: Indicamos el puerto por el cual nuestra aplicacion se desplegara, normalmente 80
+    - PORT: Indicamos el puerto por el cual nuestra aplicacion se desplegara, normalmente 8005
     - DBHOST: IP de la maquina donde esta alojada la base de datos.
-    - DOCKER_IP: Se utiliza para dar una salida al docker creando una red virtual dentro de tu ordenador, esta ip seria la ip para acceder a esa red (172.DOCKER_IP.0.1)
+    - DOCKER_IP: Se utiliza para dar una salida al docker creando una red virtual dentro de tu ordenador, esta ip seria la ip para acceder a esa red (172.DOCKER_IP.0.1), ejempl: 55
     - DBNAME: Nombre de la base de datos
     - DBUSER: Usuario que se conectara con la base de datos y realizara todas las operaciones.
     - DBPASSWORD: Contraseña del usuario.
     - DBPOST: El puerto de conexion con la base de datos
-    - PINEBOODIR: /ruta/pineboo
-    - MODULESDIR: /ruta/modules donde queremos la carga estatica
-
+    - PINEBOODIR: /ruta/pineboo, Ej: /home/usuario/Pineboo/
+    - MODULESDIR: /ruta/modules donde queremos la carga estatica Ej: /home/usuario/funcional/
+    - TEMPDIR: Ruta para poder cachear los qs traducidos, normalmente: /pineboo/Pineboo/tempdata
+    - STATIC_LOADER_DIRS: Scripts sobre los queremos activar la carga estatica, siempre comenzaran con /pineboo/modules/ seguido de la funcionalidad/modulo que queramos cargar. Ej: /pineboo/modules/fun_elganso/nuevo/sistema/libreria/scripts/
 
 Adaptar a aplicación
 --------------------
@@ -94,8 +95,6 @@ Para ello cambiaremos la configuración del fichero app/AQNEXT/local.py
 Aquí configuramos si queremos carga estatica:
 
     - StaticLoader: Si la dejamos como True estamos indicando que queremos activada la carga estatica, seria recomendable desactivarla cuando no se este desarrollando
-    - dirs: Indicamos la ruta a los scripts que queremos cargar con carga estatica siempre con /pineboo/modules/ delante, por ejemplo si queremos cargar los scripts de libreria = [True, "/pineboo/modules/libreria/scripts",]
-
 
 
 Comandos
@@ -108,6 +107,9 @@ Comandos
     - Tirar el docker::
 
         docker-compose down
+
+    - Subir version::
+        docker-compose build
 
     - Ver los nombres de los servicios (tiene que estar levantado)::
 
